@@ -22,7 +22,7 @@ export default function BenefitAccordion({ benefits }: BenefitAccordionProps) {
         {leftColumn.map((benefit, index) => (
           <div
             key={index}
-            className="flex items-start space-x-4 p-4 rounded-xl border border-[#3C3C3C] hover:border-[#2d8c80] transition-all duration-300 group"
+            className="flex items-start space-x-4 p-4 rounded-xl border border-[#3C3C3C] hover:border-[#2d8c80] transition-all duration-300 group bg-[#3c3c3c]/20 backdrop-blur-[2px] hover:bg-[#3c3c3c]/30"
           >
             {/* Icona */}
             <div className="flex-shrink-0 w-8 h-8 bg-[#3C3C3C] rounded-lg flex items-center justify-center group-hover:bg-[#2d8c80] transition-colors duration-300">
@@ -49,7 +49,7 @@ export default function BenefitAccordion({ benefits }: BenefitAccordionProps) {
         {rightColumn.map((benefit, index) => (
           <div
             key={index + 3}
-            className="flex items-start space-x-4 p-4 rounded-xl border border-[#3C3C3C] hover:border-[#2d8c80] transition-all duration-300 group"
+            className="flex items-start space-x-4 p-4 rounded-xl border border-[#3C3C3C] hover:border-[#2d8c80] transition-all duration-300 group bg-[#3c3c3c]/30 backdrop-blur-[2px] hover:bg-[#3c3c3c]/40"
           >
             {/* Icona */}
             <div className="flex-shrink-0 w-8 h-8 bg-[#3C3C3C] rounded-lg flex items-center justify-center group-hover:bg-[#2d8c80] transition-colors duration-300">

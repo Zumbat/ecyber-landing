@@ -1,215 +1,110 @@
 'use client';
 
-import { useMemo, useRef } from 'react';
+import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Line, Points, PointMaterial } from '@react-three/drei';
+import { Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
 
 interface GlobeProps {
   radius?: number;
-  curveCount?: number;
   performanceMode?: boolean;
 }
 
-export default function Globe({ radius = 3, curveCount = 60, performanceMode = false }: GlobeProps) {
+export default function Globe({ radius = 3, performanceMode = false }: GlobeProps) {
   const groupRef = useRef<THREE.Group>(null);
   const pointsRef = useRef<THREE.Points>(null);
 
-  // Genera le curve e le particelle una sola volta con useMemo
-  const { curves, particles } = useMemo(() => {
-    const generatedCurves: Array<{
-      points: THREE.Vector3[];
-      color: string;
-    }> = [];
+  // Genera particelle per ogni linea orizzontale (parallela)
+  const particles = useRef<THREE.Vector3[]>([]);
+  const particleTrails = useRef<THREE.Vector3[][]>([]);
 
-    const allParticles: THREE.Vector3[] = [];
-
-    // Genera linee meridiane (verticali) per creare la struttura del globo
-    const meridianCount = Math.floor(curveCount * 0.4);
-    for (let i = 0; i < meridianCount; i++) {
-      const theta = (i / meridianCount) * Math.PI * 2;
-      const points: THREE.Vector3[] = [];
+  // Inizializza le particelle una sola volta
+  if (particles.current.length === 0) {
+    // Crea una particella per ogni linea orizzontale (16 linee)
+    for (let i = 0; i < 16; i++) {
+      const phi = (i / 16) * Math.PI; // Da 0 a π
+      const theta = 0; // Iniziamo a theta=0
       
-      // Crea una linea meridiana completa con meno punti per performance
-      const pointCount = performanceMode ? 10 : 15;
-      for (let j = 0; j <= pointCount; j++) {
-        const phi = (j / pointCount) * Math.PI;
-        const point = new THREE.Vector3();
-        point.setFromSphericalCoords(radius, phi, theta);
-        points.push(point);
-      }
+      const particle = new THREE.Vector3();
+      particle.setFromSphericalCoords(radius, phi, theta);
+      particles.current.push(particle);
       
-      // Aggiungi particelle lungo la linea meridiana
-      for (let k = 0; k < points.length; k += 2) {
-        const particle = points[k].clone();
-        particle.add(new THREE.Vector3(
-          (Math.random() - 0.5) * 0.05,
-          (Math.random() - 0.5) * 0.05,
-          (Math.random() - 0.5) * 0.05
-        ));
-        allParticles.push(particle);
-      }
-
-      // Genera colori con gradiente blu/viola
-      const colors = ['#e8e8e8', '#3c3c3c']; // Verde acqua, Viola, Rosa
-      const hue = colors[Math.floor(Math.random() * colors.length)];
-      const saturation = 60;
-      const lightness = 40;
-      const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-
-      generatedCurves.push({
-        points,
-        color
-      });
+      // Crea la scia per questa particella (ultimi 10 punti)
+      particleTrails.current.push([]);
     }
-
-    // Genera linee parallele (orizzontali) per completare il globo
-    const parallelCount = Math.floor(curveCount * 0.4);
-    for (let i = 0; i < parallelCount; i++) {
-      const phi = (i / parallelCount) * Math.PI;
-      const points: THREE.Vector3[] = [];
-      
-      // Crea una linea parallela completa con meno punti per performance
-      const pointCount = performanceMode ? 10 : 15;
-      for (let j = 0; j <= pointCount; j++) {
-        const theta = (j / pointCount) * Math.PI * 2;
-        const point = new THREE.Vector3();
-        point.setFromSphericalCoords(radius, phi, theta);
-        points.push(point);
-      }
-      
-      // Aggiungi particelle lungo la linea parallela
-      for (let k = 0; k < points.length; k += 2) {
-        const particle = points[k].clone();
-        particle.add(new THREE.Vector3(
-          (Math.random() - 0.5) * 0.05,
-          (Math.random() - 0.5) * 0.05,
-          (Math.random() - 0.5) * 0.05
-        ));
-        allParticles.push(particle);
-      }
-
-      // Genera colori con gradiente blu/viola
-      const colors = ['#a1a1a1', '#919fa3']; // Verde acqua, Viola, Rosa
-      const hue = colors[Math.floor(Math.random() * colors.length)];
-      const saturation = 60;
-      const lightness = 40;
-      const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-
-      generatedCurves.push({
-        points,
-        color
-      });
-    }
-
-    // // Genera alcune linee casuali per aggiungere complessità
-    // const randomCount = curveCount - meridianCount - parallelCount;
-    // for (let i = 0; i < randomCount; i++) {
-    //   // Genera punti casuali sulla superficie della sfera
-    //   const startPoint = new THREE.Vector3();
-    //   const endPoint = new THREE.Vector3();
-      
-    //   // Usa coordinate sferiche per punti sulla superficie
-    //   const startTheta = Math.random() * Math.PI * 2;
-    //   const startPhi = Math.acos(2 * Math.random() - 1);
-    //   const endTheta = Math.random() * Math.PI * 2;
-    //   const endPhi = Math.acos(2 * Math.random() - 1);
-
-    //   startPoint.setFromSphericalCoords(radius, startPhi, startTheta);
-    //   endPoint.setFromSphericalCoords(radius, endPhi, endTheta);
-
-    //   // Genera punti di controllo intermedi per curve più fluide
-    //   const midPoint1 = new THREE.Vector3();
-    //   const midPoint2 = new THREE.Vector3();
-      
-    //   const midTheta1 = startTheta + (endTheta - startTheta) * 0.33;
-    //   const midPhi1 = startPhi + (endPhi - startPhi) * 0.33;
-    //   const midTheta2 = startTheta + (endTheta - startTheta) * 0.66;
-    //   const midPhi2 = startPhi + (endPhi - startPhi) * 0.66;
-
-    //   // Punti di controllo sulla superficie per curve naturali
-    //   midPoint1.setFromSphericalCoords(radius, midPhi1, midTheta1);
-    //   midPoint2.setFromSphericalCoords(radius, midPhi2, midTheta2);
-
-    //   // Crea la curva usando CatmullRomCurve3
-    //   const curve = new THREE.CatmullRomCurve3([
-    //     startPoint,
-    //     midPoint1,
-    //     midPoint2,
-    //     endPoint
-    //   ]);
-
-    //   // Genera punti lungo la curva
-    //   const pointCount = performanceMode ? 40 : 60;
-    //   const points = curve.getPoints(pointCount);
-
-    //   // Aggiungi particelle lungo la curva
-    //   for (let j = 0; j < points.length; j += 3) {
-    //     const particle = points[j].clone();
-    //     // Aggiungi un po' di variazione casuale
-    //     particle.add(new THREE.Vector3(
-    //       (Math.random() - 0.5) * 0.05,
-    //       (Math.random() - 0.5) * 0.05,
-    //       (Math.random() - 0.5) * 0.05
-    //     ));
-    //     allParticles.push(particle);
-    //   }
-
-    //   // Genera colori con gradiente blu/viola
-    //   const colors = ['#e8e8e8', '#3c3c3c']; // Verde acqua, Viola, Rosa
-    //   const hue = colors[Math.floor(Math.random() * colors.length)];
-    //   const saturation = 70; // 70-100%
-    //   const lightness = 60 + Math.random() * 30; // 60-90%
-    //   const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-
-    //   generatedCurves.push({
-    //     points,
-    //     color
-    //   });
-    // }
-
-    return { curves: generatedCurves, particles: allParticles };
-  }, [radius, curveCount, performanceMode]);
+  }
 
   // Animazione di rotazione lenta solo sull'asse Y
   useFrame((state, delta) => {
     if (groupRef.current) {
-      // Rotazione più lenta per performance
-      groupRef.current.rotation.y += delta * (performanceMode ? 0.02 : 0.03);
+      // Rotazione solo sull'asse Y
+      groupRef.current.rotation.y += delta * 0.08;
     }
 
-    // Animazione delle particelle (anche solo asse Y)
-    if (pointsRef.current) {
-      pointsRef.current.rotation.y += delta * (performanceMode ? 0.01 : 0.02);
-    }
+    // Anima le particelle lungo le linee orizzontali
+    particles.current.forEach((particle, index) => {
+      const phi = (index / 16) * Math.PI; // Mantieni la stessa altezza
+      const theta = (state.clock.elapsedTime * 0.5 + index * 0.1) % (Math.PI * 2); // Muovi lungo la circonferenza
+      
+      // Aggiorna la posizione della particella
+      particle.setFromSphericalCoords(radius, phi, theta);
+      
+      // Aggiorna la scia
+      const trail = particleTrails.current[index];
+      trail.push(particle.clone());
+      
+      // Mantieni solo gli ultimi 10 punti della scia
+      if (trail.length > 10) {
+        trail.shift();
+      }
+    });
   });
 
   return (
     <group ref={groupRef}>
-      {/* Renderizza tutte le curve con blending additivo */}
-      {curves.map((curve, index) => (
-        <Line
-          key={index}
-          points={curve.points}
-          color={curve.color}
-          lineWidth={performanceMode ? 1.5 : 2.5}
+      {/* Sfera reticolare usando wireframe - solo meridiane e parallele */}
+      <mesh>
+        <sphereGeometry args={[radius, 16, 16]} />
+        <meshStandardMaterial 
+          color="#3C3C3C" 
+          wireframe={true}
           transparent
-          opacity={0.8}
-          blending={THREE.AdditiveBlending}
+          opacity={1}
+          emissive="#1a1a1a"
+          emissiveIntensity={0.2}
         />
-      ))}
+      </mesh>
 
-      {/* Particelle distribuite sulle curve */}
-      <Points ref={pointsRef} positions={new Float32Array(particles.flatMap(p => [p.x, p.y, p.z]))} stride={3} frustumCulled={false}>
+      {/* Particelle principali */}
+      <Points ref={pointsRef} positions={new Float32Array(particles.current.flatMap(p => [p.x, p.y, p.z]))} stride={3} frustumCulled={false}>
         <PointMaterial
           transparent
-          color="#919fa3"
+          color="#3C3C3C"
           size={performanceMode ? 0.02 : 0.03}
           sizeAttenuation={true}
           depthWrite={false}
-          blending={THREE.AdditiveBlending}
         />
       </Points>
+
+      {/* Scie luminose delle particelle */}
+      {particleTrails.current.map((trail, trailIndex) => 
+        trail.length > 1 && (
+          <mesh key={trailIndex}>
+            <bufferGeometry>
+              <bufferAttribute
+                attach="attributes-position"
+                args={[new Float32Array(trail.flatMap(p => [p.x, p.y, p.z])), 3]}
+              />
+            </bufferGeometry>
+            <lineBasicMaterial
+              color="#3C3C3C"
+              transparent
+              opacity={0.4}
+              linewidth={1}
+            />
+          </mesh>
+        )
+      )}
     </group>
   );
 }

@@ -1,35 +1,11 @@
-'use client';
-
-import { useState } from 'react';
 import Image from 'next/image';
 
 export default function Footer() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Qui puoi aggiungere la logica per inviare il form
-    console.log('Form submitted:', formData);
-    // Reset form
-    setFormData({ name: '', email: '', message: '' });
-  };
 
   return (
-    <footer className="w-full bg-[#010101] gradient-border-top">
+    <footer className="w-full bg-[#101010] gradient-border-top">
       <div className="max-w-6xl mx-auto px-8 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           
           {/* Logo e Info Azienda */}
           <div className="lg:col-span-1">
@@ -79,82 +55,46 @@ export default function Footer() {
 
           {/* Contatti */}
           <div className="lg:col-span-1">
-            <h3 className="text-lg font-bold text-[#E8E8E8] mb-6">Contatti</h3>
-            <div className="space-y-4">
-              <div className="flex items-center space-x-3">
-                <div className="w-6 h-6 bg-[#3C3C3C] rounded-full flex items-center justify-center">
-                  <svg className="w-3 h-3 text-[#E8E8E8]" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-                  </svg>
+            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+              <div className="flex-1">
+                <h3 className="text-lg font-bold text-[#E8E8E8] mb-6">Contatti</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-6 h-6 bg-[#3C3C3C] rounded-full flex items-center justify-center">
+                      <svg className="w-3 h-3 text-[#E8E8E8]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                      </svg>
+                    </div>
+                    <span className="text-[#A1A1A1] text-sm">+39 123 456 7890</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-6 h-6 bg-[#3C3C3C] rounded-full flex items-center justify-center">
+                      <svg className="w-3 h-3 text-[#E8E8E8]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                      </svg>
+                    </div>
+                    <span className="text-[#A1A1A1] text-sm">info@e-cyber.it</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-6 h-6 bg-[#3C3C3C] rounded-full flex items-center justify-center">
+                      <svg className="w-3 h-3 text-[#E8E8E8]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                      </svg>
+                    </div>
+                    <span className="text-[#A1A1A1] text-sm">Milano, Italia</span>
+                  </div>
                 </div>
-                <span className="text-[#A1A1A1] text-sm">+39 123 456 7890</span>
               </div>
-              <div className="flex items-center space-x-3">
-                <div className="w-6 h-6 bg-[#3C3C3C] rounded-full flex items-center justify-center">
-                  <svg className="w-3 h-3 text-[#E8E8E8]" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                  </svg>
-                </div>
-                <span className="text-[#A1A1A1] text-sm">info@e-cyber.it</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <div className="w-6 h-6 bg-[#3C3C3C] rounded-full flex items-center justify-center">
-                  <svg className="w-3 h-3 text-[#E8E8E8]" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                  </svg>
-                </div>
-                <span className="text-[#A1A1A1] text-sm">Milano, Italia</span>
+              
+              {/* CTA Button */}
+              <div className="flex items-center lg:items-start">
+                <button className="border border-[#3c3c3c] text-[#E8E8E8] hover:bg-[#3c3c3c]/20 hover:text-[#E8E8E8] font-semibold py-2 px-4 rounded-2xl text-sm cursor-pointer transition-all duration-300">
+                  Iscriviti
+                </button>
               </div>
             </div>
           </div>
 
-          {/* CTA Form */}
-          <div className="lg:col-span-2">
-            <h3 className="text-lg font-bold text-[#E8E8E8] mb-6">Richiedi un preventivo</h3>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Nome"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-transparent border border-[#3C3C3C] rounded-lg text-[#E8E8E8] placeholder-[#A1A1A1] focus:border-[#E8E8E8] focus:outline-none transition-colors duration-300"
-                    required
-                  />
-                </div>
-                <div>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-transparent border border-[#3C3C3C] rounded-lg text-[#E8E8E8] placeholder-[#A1A1A1] focus:border-[#E8E8E8] focus:outline-none transition-colors duration-300"
-                    required
-                  />
-                </div>
-              </div>
-              <div>
-                <textarea
-                  name="message"
-                  placeholder="Descrivi le tue esigenze di sicurezza..."
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  rows={4}
-                  className="w-full px-4 py-3 bg-transparent border border-[#3C3C3C] rounded-lg text-[#E8E8E8] placeholder-[#A1A1A1] focus:border-[#E8E8E8] focus:outline-none transition-colors duration-300 resize-none"
-                  required
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full md:w-auto px-8 py-3 bg-[#3C3C3C] text-[#E8E8E8] rounded-lg hover:bg-[#E8E8E8] hover:text-[#111111] transition-all duration-300 font-semibold"
-              >
-                Invia Richiesta
-              </button>
-            </form>
-          </div>
         </div>
 
         {/* Bottom Bar */}

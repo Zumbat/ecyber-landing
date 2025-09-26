@@ -1,10 +1,41 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 export default function Navbar() {
+  const [isFooterVisible, setIsFooterVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsFooterVisible(true);
+          } else {
+            setIsFooterVisible(false);
+          }
+        });
+      },
+      {
+        threshold: 0.1, // Trigger when 10% of footer is visible
+      }
+    );
+
+    const footer = document.querySelector('footer');
+    if (footer) {
+      observer.observe(footer);
+    }
+
+    return () => {
+      if (footer) {
+        observer.unobserve(footer);
+      }
+    };
+  }, []);
+
   return (
-    <nav className="w-full bg-[#111111]/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50">
+    <nav className={`w-full bg-[#111111]/70 backdrop-blur-[4px] fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${isFooterVisible ? '-translate-y-full' : 'translate-y-0'}`}>
       <div className="max-w-6xl mx-auto px-8 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}

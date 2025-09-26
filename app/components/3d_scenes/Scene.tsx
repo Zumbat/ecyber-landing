@@ -2,7 +2,6 @@
 
 import { Canvas, useThree, useFrame } from '@react-three/fiber';
 import { OrbitControls, Environment, PerspectiveCamera } from '@react-three/drei';
-import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import { useState, useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import Globe from './Globe';
@@ -10,23 +9,23 @@ import Globe from './Globe';
 // Componente per gestire la camera con movimento Z basato sullo scroll della pagina
 function CameraController() {
   const { camera } = useThree();
-  const targetZRef = useRef(0);
+  const targetZRef = useRef(2);
 
   useEffect(() => {
     // Inizializza la camera al centro
-    camera.position.set(0, 0, 3);
+    camera.position.set(0, 0, 2);
     camera.lookAt(0, 0, 0);
     
-    // Scroll handler (stesso metodo di ParticleBackground)
+    // Scroll handler - zoom completo a 2vh
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const maxScroll = window.innerHeight * 2; // 2 volte l'altezza dello schermo
       const scrollProgress = Math.min(scrollY / maxScroll, 1); // 0 to 1
       
-      // Calcola posizione Z basata sullo scroll (da 0 a 15 per vedere meglio il globo)
+      // Calcola posizione Z basata sullo scroll (da 2 a 7)
       // Più scroll = più lontano dalla scena (zoom-out)
-      const minZ = 3;   // Posizione iniziale (dentro il globo)
-      const maxZ = 20;  // Posizione massima (lontano dal globo ma ancora visibile)
+      const minZ = 2;   // Posizione iniziale (vicino al globo)
+      const maxZ = 7;   // Posizione massima (lontano dal globo ma ancora visibile)
       targetZRef.current = minZ + (scrollProgress * (maxZ - minZ));
     };
 
@@ -39,15 +38,16 @@ function CameraController() {
     };
   }, [camera]);
 
-  useFrame(() => {
+  useFrame((state, delta) => {
     if (camera instanceof THREE.PerspectiveCamera) {
-      // Interpola dolcemente verso la posizione Z target
+      // Interpola dolcemente verso la posizione Z target con lerp più fluido
       const currentZ = camera.position.z;
       const targetZ = targetZRef.current;
-      const lerpFactor = 0.05;
+      
+      // Lerp più fluido basato sul delta time per movimento costante
       
       // Mantieni la camera sempre al centro (0,0) e muovi solo Z
-      camera.position.set(0, 0, currentZ + (targetZ - currentZ) * lerpFactor);
+      camera.position.set(0, 0, currentZ + (targetZ - currentZ));
       
       // La camera deve sempre guardare verso il centro del globo (0,0,0)
       camera.lookAt(0, 0, 0);
@@ -94,11 +94,12 @@ export default function Scene({ className = "", style = {}, width = "100%", heig
     <div
       className={`pointer-events-none ${className}`}
       style={{ 
-        width: '100%', 
-        height: '100%',
-        position: 'absolute',
+        width: '100vw', 
+        height: '100vh',
+        position: 'fixed',
         top: 0,
         left: 0,
+        zIndex: -1,
         ...style 
       }}>
       <Canvas
@@ -127,29 +128,24 @@ export default function Scene({ className = "", style = {}, width = "100%", heig
         
         {/* Luci per illuminare la scena */}
         <ambientLight intensity={0.1} />
-        <pointLight position={[0, 0, 0]} intensity={0.3} color="#4A90E2" />
-        <directionalLight position={[0, 0, 5]} intensity={0.2} />
+        <pointLight 
+          position={[0, -4, 0]} 
+          intensity={1} 
+          color="#e8e8e8"     
+          distance={10}
+          decay={2}
+        />
+        <directionalLight position={[0, 0, 5]} intensity={0.6} />
         
         {/* Ambiente per riflessi */}
-        <Environment preset="night" />
+        <Environment preset="studio" />
         
         {/* Il nostro globo (vista dall'interno) */}
         <Globe 
           radius={3} 
-          curveCount={performanceMode ? 20 : 30} 
           performanceMode={performanceMode}
         />
         
-        {/* Effetti di post-processing per il glow */}
-        {!performanceMode && (
-          <EffectComposer>
-            <Bloom
-              intensity={0.5}
-              luminanceThreshold={0.1}
-              luminanceSmoothing={0.9}
-            />
-          </EffectComposer>
-        )}
         
       </Canvas>
     </div>
