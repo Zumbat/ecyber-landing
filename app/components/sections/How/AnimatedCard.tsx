@@ -3,7 +3,7 @@
 import React from "react";
 
 type AnimatedCardProps = {
-  srcMp4: string;
+  srcMp4?: string;
   srcWebm?: string;
   title: string;
   element?: React.ReactNode;
@@ -11,7 +11,7 @@ type AnimatedCardProps = {
 
 export default function AnimatedCard({ srcMp4, srcWebm, title, element }: AnimatedCardProps) {
   return (
-    <div className="relative w-full max-w-sm rounded-2xl overflow-hidden bg-gradient-to-b from-[#0a0c10] to-[#0f1117] border border-white/10 shadow-lg">
+    <div className="relative w-full h-[200px] max-w-sm rounded-2xl overflow-hidden bg-gradient-to-b from-[#0a0c10] to-[#0f1117] border border-white/10 shadow-lg">
       {/* Video animato */}
       {element ? element : (<>
       <video
@@ -22,7 +22,7 @@ export default function AnimatedCard({ srcMp4, srcWebm, title, element }: Animat
         playsInline
       >
         {srcWebm && <source src={srcWebm} type="video/webm" />}
-        <source src={srcMp4} type="video/mp4" />
+        {srcMp4 && <source src={srcMp4} type="video/mp4" />}
         Your browser does not support the video tag.
       </video>
       </>)}

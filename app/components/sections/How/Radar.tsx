@@ -1,10 +1,38 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Radar = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [isInView, setIsInView] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+        }
+      },
+      {
+        threshold: 0.3,
+        rootMargin: '0px 0px -100px 0px'
+      }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isInView) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -148,11 +176,11 @@ const Radar = () => {
     };
 
     drawRadar();
-  }, []);
+  }, [isInView]);
 
   return (
-    <div className="flex items-center justify-center">
-      <canvas ref={canvasRef} className="rounded-full shadow-lg" />
+    <div ref={containerRef} className="flex items-center justify-center">
+      {isInView && <canvas ref={canvasRef} className="rounded-full shadow-lg" />}
     </div>
   );
 };

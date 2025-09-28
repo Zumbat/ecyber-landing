@@ -15,25 +15,141 @@ const ClientCards = () => {
       image: "/images/radar.mp4",
       title: "Software potentissimi",
       content: "Usiamo strumenti professionali, testati nel settore, combinati con competenze manuali per garantire precisione e completezza.",
-      element: <div className="flex items-center justify-center">
-        <Radar/>
+      element: <div className="flex items-center justify-center w-full h-full overflow-hidden">
+        {/* Sfondo con punti grigi */}
+        <div 
+           className="absolute inset-0 opacity-30"
+           style={{
+             backgroundImage: `
+               radial-gradient(circle at 1px 1px, #f7f7f74d 1px, transparent 0)
+             `,
+             backgroundSize: '20px 20px'
+           }}
+         />
+        <video 
+          src="/assets/chip_ecyber.webm" 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          className="w-full h-full object-cover rounded-2xl"
+          style={{ 
+            minHeight: '200px', 
+            minWidth: '200px',
+            transform: 'scale(1.4) translateY(5px)',
+          }}
+          onError={(e) => {
+            console.error('Video error:', e);
+            e.currentTarget.style.display = 'none';
+          }}
+          onLoadStart={() => {}}
+          onCanPlay={() => {}}
+        >
+          <source src="/assets/chip_ecyber.webm" type="video/webm" />
+          Il tuo browser non supporta il video.
+        </video>
       </div>
-
     },
     {
       alert: "Report",
       image: "/images/report.mp4",
       title: "Report dettagliati",
       content: "Ogni assessment culmina in un report chiaro: descrizione delle vulnerabilità, impatto, probabilità, suggerimenti concreti per mitigazione, riferimenti tecnici.",
+      element: <div className="flex items-center justify-center w-full h-full overflow-hidden">
+        {/* Sfondo con punti grigi */}
+        <div 
+           className="absolute inset-0 opacity-30"
+           style={{
+             backgroundImage: `
+               radial-gradient(circle at 1px 1px, #f7f7f74d 1px, transparent 0)
+             `,
+             backgroundSize: '20px 20px'
+           }}
+         />
+        <video 
+          src="/assets/radar_ecyber.webm" 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          className="w-full h-full object-cover rounded-2xl"
+          style={{ 
+            minHeight: '300px', 
+            minWidth: '300px',
+            transform: 'scale(0.7)'
+          }}
+          onError={(e) => {
+            console.error('Video error:', e);
+            e.currentTarget.style.display = 'none';
+          }}
+          onLoadStart={() => {}}
+          onCanPlay={() => {}}
+        >
+          <source src="/assets/radar_ecyber.webm" type="video/webm" />
+          Il tuo browser non supporta il video.
+        </video>
+      </div>
     },
     {
       alert: "Supporto",
       image: "/images/supporto.mp4",
       title: "Supporto continuo",
       content: "Non è solo un check una tantum: offriamo monitoring (quando pertinente), follow-up, e consulenza per mantenere l'assetto sicuro nel tempo.",
-    element: <div className="flex items-center justify-center">
-        <PasswordScan/>
-    </div>
+      // element: <div className="flex items-center justify-center w-full h-full">
+      //   <video 
+      //     src="/assets/counter_ecyber.webm" 
+      //     autoPlay 
+      //     loop 
+      //     muted 
+      //     playsInline
+      //     className="w-full h-full object-cover rounded-2xl"
+      //     style={{ minHeight: '300px', minWidth: '300px' }}
+      //     onError={(e) => {
+      //       console.error('Video error:', e);
+      //       e.currentTarget.style.display = 'none';
+      //     }}
+      //     onLoadStart={() => {}}
+      //     onCanPlay={() => {}}
+      //   >
+      //     <source src="/assets/counter_ecyber.webm" type="video/webm" />
+      //     Il tuo browser non supporta il video.
+      //   </video>
+      // </div>
+        element: <div className="relative flex items-center justify-center w-full h-full overflow-hidden">
+          {/* Sfondo con punti grigi */}
+          <div 
+            className="absolute inset-0 opacity-30"
+            style={{
+              backgroundImage: `
+                radial-gradient(circle at 1px 1px, #f7f7f74d 1px, transparent 0)
+              `,
+              backgroundSize: '20px 20px'
+            }}
+          />
+          {/* Video del supporto */}
+          <video 
+            src="/assets/support_ecyber.webm" 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            className="w-full h-full object-cover rounded-2xl relative z-10"
+            style={{ 
+              minHeight: '200px', 
+              minWidth: '200px',
+              transform: 'scale(1.6, 1.3)',
+            }}
+            onError={(e) => {
+              console.error('Video error:', e);
+              e.currentTarget.style.display = 'none';
+            }}
+            onLoadStart={() => {}}
+            onCanPlay={() => {}}
+          >
+            <source src="/assets/support_ecyber.webm" type="video/webm" />
+            Il tuo browser non supporta il video.
+          </video>
+        </div>
     },
   ];
 
@@ -54,7 +170,7 @@ const ClientCards = () => {
           <div 
             className={`relative w-80 bg-[#3C3C3C] rounded-2xl overflow-hidden border border-[#3C3C3C] ${index === 0 ? 'md:ml-0' : index === 1 ? 'md:ml-[15%]' : 'md:ml-[30%]'}`}
           >
-            <AnimatedCard srcMp4={step.image} title={step.alert} element={step.element} />
+            <AnimatedCard title={step.alert} element={step.element} />
           </div>
           
           {/* Content - positioned to the right and centered */}
