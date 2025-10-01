@@ -8,6 +8,7 @@ import BenefitsSection from './components/sections/Benefits';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import Radar from './components/sections/How/Radar';
+import MacbookScrollDemo from './components/macbook-scroll-demo';
 
 export default function Home() {
   return (
@@ -20,6 +21,8 @@ export default function Home() {
       <WhatSection />
       <HowSection />
       <BenefitsSection />
+      {/* Macbook Scroll Demo */}
+      <MacbookScrollDemo />
       <Footer />
     </div>
   );
