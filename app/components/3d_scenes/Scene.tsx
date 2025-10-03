@@ -62,9 +62,10 @@ interface SceneProps {
   style?: React.CSSProperties;
   width?: string;
   height?: string;
+  isVisible?: boolean;
 }
 
-export default function Scene({ className = "", style = {}, width = "100%", height = "100%" }: SceneProps) {
+export default function Scene({ className = "", style = {}, width = "100%", height = "100%", isVisible = true }: SceneProps) {
   const [performanceMode, setPerformanceMode] = useState(false);
   const [webglSupported, setWebglSupported] = useState(true);
 
@@ -100,6 +101,8 @@ export default function Scene({ className = "", style = {}, width = "100%", heig
         top: 0,
         left: 0,
         zIndex: -1,
+        opacity: isVisible ? 1 : 0,
+        transition: 'opacity 0.5s ease-in-out',
         ...style 
       }}>
       <Canvas

@@ -9,6 +9,8 @@ import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import Radar from './components/sections/How/Radar';
 import MacbookScrollDemo from './components/macbook-scroll-demo';
+import ScreenshotSection from './components/sections/Screenshot';
+import WavyBackgroundDemo from './components/wavy-background-demo';
 
 export default function Home() {
   return (
@@ -23,6 +25,8 @@ export default function Home() {
       <BenefitsSection />
       {/* Macbook Scroll Demo */}
       <MacbookScrollDemo />
+      {/* <ScreenshotSection /> */}
+      <WavyBackgroundDemo/>
       <Footer />
     </div>
   );

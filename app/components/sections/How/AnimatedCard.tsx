@@ -11,7 +11,7 @@ type AnimatedCardProps = {
 
 export default function AnimatedCard({ srcMp4, srcWebm, title, element }: AnimatedCardProps) {
   return (
-    <div className="relative w-full h-[200px] max-w-sm rounded-2xl overflow-hidden bg-gradient-to-b from-[#0a0c10] to-[#0f1117] border border-white/10 shadow-lg">
+    <div className="relative w-full h-[200px] max-w-sm rounded-2xl overflow-hidden bg-gradient-to-b from-[#0a0c10] to-[#0f1117] shadow-lg">
       {/* Video animato */}
       {element ? element : (<>
       <video
@@ -28,7 +28,7 @@ export default function AnimatedCard({ srcMp4, srcWebm, title, element }: Animat
       </>)}
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/60 to-transparent" />
       
     </div>
   );

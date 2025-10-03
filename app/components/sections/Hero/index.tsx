@@ -1,3 +1,5 @@
+import HoverMovingBorderButton from "../../ui/hover-moving-border-button";
+
 export default function HeroSection() {
   return (
     <section className="w-full h-screen flex items-start justify-center relative overflow-hidden pt-20">
@@ -43,9 +45,13 @@ export default function HeroSection() {
 
             {/* CTA Button */}
             <div className="flex justify-start items-start pt-8">
-              <button className="border border-[#E8E8E8] text-[#E8E8E8] hover:bg-[#E8E8E8] hover:text-[#111111] font-semibold py-2 px-4 rounded-xl text-sm cursor-pointer transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-[#E8E8E8]/25">
+              <HoverMovingBorderButton
+                borderRadius="0.75rem"
+                duration={2000}
+                className="py-2 px-4"
+              >
                 Inizia ora →
-              </button>
+              </HoverMovingBorderButton>
             </div>
           </div>
         </div>

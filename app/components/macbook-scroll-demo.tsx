@@ -4,21 +4,25 @@ import { MacbookScroll } from "@/app/components/ui/macbook-scroll";
 export default function MacbookScrollDemo() {
   return (
     <div 
-      className="w-full overflow-hidden relative bg-gradient-to-r from-[#111111]/30 via-[#111111] to-[#111111]"
+      className="w-full overflow-hidden relative bg-[#111111] gradient-border-top"
       
     >
       <MacbookScroll
         title={
-          <span>
-            This Macbook is built with Tailwindcss. <br /> No kidding.
-          </span>
-        }
+          <>
+          <div className="text-4xl font-bold mb-2 text-[#E8E8E8] orbitron-text">
+                Tre piattaforme <br/> che amerai usare.
+            </div>
+            <p className="text-[#A1A1A1] text-lg mb-2">
+                Ottimizzate per essere intuitive ed efficaci.
+            </p>
+        </>}
         badge={
-          <a href="#">
+          <a href="https://tools.ecyber.it">
             <ECyberBadge className="h-10 w-10 -rotate-12 transform" />
           </a>
         }
-        src={`/linear.webp`}
+        src={`/assets/screen_platform1.webp`}
         showGradient={false}
       />
     </div>

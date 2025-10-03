@@ -90,9 +90,8 @@ body {
   }
   
   .orbitron-text {
-    font-family: var(--font-orbitron), monospace;
+    font-family: var(--font-orbitron), 'Orbitron', monospace;
   }
-  
   
   .gradient-border-top {
     position: relative;
@@ -132,9 +131,5 @@ body {
       rgba(255, 255, 255, 0.1) 80%, 
       transparent 100%
     );
-  }
-
-  .orbitron-text {
-    font-family: 'Orbitron', var(--font-orbitron), sans-serif;
   }
   
