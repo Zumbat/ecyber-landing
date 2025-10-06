@@ -22,8 +22,8 @@ export default function WhatSection() {
             className="hover:border-[#2d8c80]"
           />
           <ServiceCard
-            title="Data Monitoring"
-            description="Monitora il web, i database esposti, i leak grazie a sistemi come Dehashed e rispondi proattivamente. Ricevi alert in tempo reale per qualunque esposizione o perdita potenziale dei tuoi dati sensibili."
+            title="Treath Intelligence"
+            description="Monitora il web, i database esposti, e rispondi proattivamente. Ricevi alert in tempo reale per qualunque esposizione o perdita potenziale dei tuoi dati sensibili."
             className="hover:border-[#8B5CF6]"
           />
           <ServiceCard

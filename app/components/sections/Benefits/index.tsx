@@ -1,8 +1,10 @@
+import { Light } from 'three';
 import BenefitAccordion from './BenefitAccordion';
+import { DoorClosedLocked, HeartHandshake, Orbit, Zap } from 'lucide-react';
 
 export default function BenefitsSection() {
   return (
-    <section className="w-full flex items-start justify-center mt-20">
+    <section className="w-full flex items-start justify-center mt-40 mb-80">
       <div className="max-w-4xl mx-auto px-8 py-20">
         {/* Section Title */}
         <div className="text-center mb-16 bg-gradient-to-r from-[#111111]/0 via-[#111111]/80 to-[#111111]/0">
@@ -18,29 +20,24 @@ export default function BenefitsSection() {
         <BenefitAccordion
           benefits={[
             {
-              icon: "🔒",
+              icon: <Orbit strokeWidth={1} className="text-[#E8E8E8]" size={24}/>,
               title: "Prevenzione proattiva",
               description: "Attacchi scoperti prima che diventino danni."
             },
             {
-              icon: "🔒",
+              icon: <DoorClosedLocked strokeWidth={1} className="text-[#E8E8E8]" height={24}/>,
               title: "Riduzione dei rischi",
               description: "Dati al sicuro, reputazione protetta."
             },
             {
-              icon: "🔒",
-              title: "Conformità & fiducia",
-              description: "Rispetti normative, rassicuri clienti / partner."
-            },
-            {
-              icon: "🔒",
+              icon: <Zap strokeWidth={1} className="text-[#E8E8E8]" height={24}/>,
               title: "Chiarezza & trasparenza",
               description: "Report comprensibili, priorità definite."
             },
             {
-              icon: "🔒",
-              title: "Efficienza nel tempo",
-              description: "Interventi mirati, risparmi evitando problemi futuri."
+              icon: <HeartHandshake strokeWidth={1} className="text-[#E8E8E8]" size={24}/>,
+              title: "Conformità & fiducia",
+              description: "Rispetti normative, rassicuri clienti / partner."
             }
           ]}
         />

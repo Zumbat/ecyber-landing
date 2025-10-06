@@ -26,7 +26,10 @@ export default function Home() {
       {/* Macbook Scroll Demo */}
       <MacbookScrollDemo />
       {/* <ScreenshotSection /> */}
-      <WavyBackgroundDemo/>
+      {/* <WavyBackgroundDemo/> */}
+      <section className="w-full bg-[#111111] h-[700px] relative pt-20">
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{backgroundImage: 'url(/assets/footer_effect_noise2.svg)'}}/>
+      </section>
       <Footer />
     </div>
   );

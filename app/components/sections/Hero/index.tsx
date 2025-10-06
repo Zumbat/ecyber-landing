@@ -23,7 +23,7 @@ export default function HeroSection() {
             {/* Sub-headline */}
             <p className="text-sm text-[#A1A1A1] mx-auto leading-relaxed">
               Servizi avanzati di <span className="text-[#E8E8E8] font-semibold">Cyber Security</span>: 
-              <br/>Scanning del target, Data Monitoring e Penetration Testing 
+              <br/>Scanning del target, Treath Intelligence e Penetration Testing 
               - con software top di gamma e report dettagliati.
             </p>
 

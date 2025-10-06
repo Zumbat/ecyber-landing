@@ -4,7 +4,7 @@ import { MacbookScroll } from "@/app/components/ui/macbook-scroll";
 export default function MacbookScrollDemo() {
   return (
     <div 
-      className="w-full overflow-hidden relative bg-[#111111] gradient-border-top"
+      className="w-full overflow-hidden relative bg-[#111111] gradient-border-top mt-40"
       
     >
       <MacbookScroll
