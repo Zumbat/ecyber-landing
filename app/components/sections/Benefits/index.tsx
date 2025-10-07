@@ -1,4 +1,3 @@
-import { Light } from 'three';
 import BenefitAccordion from './BenefitAccordion';
 import { DoorClosedLocked, HeartHandshake, Orbit, Zap } from 'lucide-react';
 
