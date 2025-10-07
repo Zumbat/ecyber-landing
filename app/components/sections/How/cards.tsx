@@ -20,14 +20,14 @@ const ClientCards = () => {
         <div 
            className="absolute inset-0 opacity-30"
            style={{
-             backgroundImage: `
-               radial-gradient(circle at 1px 1px, #f7f7f74d 1px, transparent 0)
+             backgroundColor: `
+               #1c1c1c
              `,
              backgroundSize: '20px 20px'
            }}
          />
         <video 
-          src="/assets/chip_ecyber.webm" 
+          src="/assets/radar.webm" 
           autoPlay 
           loop 
           muted 
@@ -36,7 +36,7 @@ const ClientCards = () => {
           style={{ 
             minHeight: '200px', 
             minWidth: '200px',
-            transform: 'scale(1.4) translateY(5px)',
+            transform: 'translateY(-8px)',
           }}
           onError={(e) => {
             console.error('Video error:', e);
@@ -45,7 +45,7 @@ const ClientCards = () => {
           onLoadStart={() => {}}
           onCanPlay={() => {}}
         >
-          <source src="/assets/chip_ecyber.webm" type="video/webm" />
+          <source src="/assets/radar.webm" type="video/webm" />
           Il tuo browser non supporta il video.
         </video>
       </div>
@@ -60,14 +60,14 @@ const ClientCards = () => {
         <div 
            className="absolute inset-0 opacity-30"
            style={{
-             backgroundImage: `
-               radial-gradient(circle at 1px 1px, #f7f7f74d 1px, transparent 0)
+             backgroundColor: `
+               #1c1c1c
              `,
              backgroundSize: '20px 20px'
            }}
          />
         <video 
-          src="/assets/radar_ecyber.webm" 
+          src="/assets/report.webm" 
           autoPlay 
           loop 
           muted 
@@ -76,7 +76,7 @@ const ClientCards = () => {
           style={{ 
             minHeight: '300px', 
             minWidth: '300px',
-            transform: 'scale(0.7)'
+            transform: 'scale(2)'
           }}
           onError={(e) => {
             console.error('Video error:', e);
@@ -85,7 +85,7 @@ const ClientCards = () => {
           onLoadStart={() => {}}
           onCanPlay={() => {}}
         >
-          <source src="/assets/radar_ecyber.webm" type="video/webm" />
+          <source src="/assets/report.webm" type="video/webm"/>
           Il tuo browser non supporta il video.
         </video>
       </div>
@@ -120,15 +120,15 @@ const ClientCards = () => {
           <div 
             className="absolute inset-0 opacity-30"
             style={{
-              backgroundImage: `
-                radial-gradient(circle at 1px 1px, #f7f7f74d 1px, transparent 0)
+              backgroundColor: `
+                #1c1c1c
               `,
               backgroundSize: '20px 20px'
             }}
           />
           {/* Video del supporto */}
           <video 
-            src="/assets/support_ecyber.webm" 
+            src="/assets/supporto.webm" 
             autoPlay 
             loop 
             muted 
@@ -137,7 +137,7 @@ const ClientCards = () => {
             style={{ 
               minHeight: '200px', 
               minWidth: '200px',
-              transform: 'scale(1.6, 1.3)',
+              transform: 'scale(1.5)',
             }}
             onError={(e) => {
               console.error('Video error:', e);
@@ -146,7 +146,7 @@ const ClientCards = () => {
             onLoadStart={() => {}}
             onCanPlay={() => {}}
           >
-            <source src="/assets/support_ecyber.webm" type="video/webm" />
+            <source src="/assets/supporto.webm" type="video/webm" />
             Il tuo browser non supporta il video.
           </video>
         </div>
@@ -155,16 +155,16 @@ const ClientCards = () => {
 
   return (<>
     <motion.div
-      className="flex flex-col md:flex-row w-full relative gap-8 "
+      className="flex flex-col md:flex-row w-full relative gap-8 items-stretch"
     >
       {STEPS.map((step, index) => (
         <div 
           key={index}
-          className={`flex flex-col-reverse items-center justify-between w-full relative gap-8 p-8 rounded-2xl bg-[#111111] border border-[#3C3C3C] h-full flex-1 min-h-[440px]`}
+          className={`flex flex-col-reverse items-stretch justify-between w-full relative gap-8 p-8 rounded-2xl bg-[#111111] border border-[#3C3C3C] h-full flex-1 min-h-[460px]`}
         >
           {/* Card positioned based on index */}
           <div 
-            className={`relative w-80 rounded-2xl overflow-hidden `}
+            className={`relative w-full h-56 rounded-2xl overflow-hidden `}
           >
             <AnimatedCard title={step.alert} element={step.element} />
           </div>
