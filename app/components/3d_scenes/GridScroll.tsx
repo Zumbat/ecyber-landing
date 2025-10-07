@@ -4,12 +4,12 @@ import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
 
 function PerspectiveGrid() {
-  const gridRef = useRef<THREE.LineSegments>(null);
+  const gridRef = useRef<THREE.GridHelper | null>(null);
 
   return (
     // A large wireframe plane tilted forward so the bottom is near the camera
     <group position={[0, 1.2, -2]} rotation={[0.55, 0, 0]}>
-      <gridHelper args={[150, 50, "#3c3c3c", "#3c3c3c"]} ref={gridRef as any} />
+      <gridHelper args={[150, 50, "#3c3c3c", "#3c3c3c"]} ref={gridRef} />
     </group>
   );
 }
