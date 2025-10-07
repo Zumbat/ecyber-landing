@@ -46,7 +46,7 @@ export const MacbookScroll = ({
 
   useEffect(() => {
     const checkMobile = () => {
-      if (window && window.innerWidth < 780) {
+      if (window && window.innerWidth <= 768) {
         setIsMobile(true);
       } else {
         setIsMobile(false);
@@ -69,9 +69,9 @@ export const MacbookScroll = ({
     [0, 0.3],
     [0.6, isMobile ? 1 : 1.5],
   );
-  const translate = useTransform(scrollYProgress, [0, 1], [20, 900]);
+  const translate = useTransform(scrollYProgress, [0, 0.6], [20, isMobile ? 200 : 400]);
   const rotate = useTransform(scrollYProgress, [0.1, 0.12, 0.3], [-28, -28, 0]);
-  const textTransform = useTransform(scrollYProgress, [0, 0.3], [0, 100]);
+  const textTransform = useTransform(scrollYProgress, [0, 0.3], [5, 100]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
   return (
@@ -80,65 +80,54 @@ export const MacbookScroll = ({
       className={`flex md:min-h-[170vh] min-h-[600px] shrink-0 transform flex-col items-center justify-start py-0 ${
         isMobile 
           ? 'scale-100' 
-          : 'scale-[0.35] sm:scale-50 md:scale-100 md:pb-80 md:pt-60 [perspective:800px]'
+          : 'scale-[0.55] sm:scale-60 md:scale-100 md:pb-80 pt-60 pb-40 [perspective:800px]'
       }`}
     >
       <motion.h2
         style={{
           translateY: textTransform,
           opacity: textOpacity,
+          paddingTop: isMobile ? '10px' : '0',
         }}
         className="mb-10 text-center text-3xl font-bold text-neutral-800 dark:text-white"
       >
         {title}
       </motion.h2>
       
-      {isMobile ? (
-        /* Mobile: Fullscreen image with p-4 padding */
-        <div className="w-full h-screen p-4">
-          <img 
-            src={src} 
-            alt="first image" 
-            className="w-full h-full object-contain rounded-lg" 
-          />
+      {/* MacBook with animations - same for both mobile and desktop */}
+      <div className={isMobile ? "scale-[0.6]" : ""}>
+        <Lid
+          src={src}
+          scaleX={scaleX}
+          scaleY={scaleY}
+          rotate={rotate}
+          translate={translate}
+        />
+        {/* Base area */}
+        <div className="relative -z-10 md:h-[22rem] md:w-[32rem] h-[12rem] w-full overflow-hidden rounded-2xl bg-gray-200 dark:bg-[#272729]">
+          {/* above keyboard bar */}
+          <div className="relative h-10 w-full">
+            <div className="absolute inset-x-0 mx-auto h-4 w-[80%] bg-[#050505]" />
+          </div>
+          <div className="relative flex">
+            <div className="mx-auto h-full w-[10%] overflow-hidden">
+              <SpeakerGrid />
+            </div>
+            <div className="mx-auto h-full w-[80%]">
+              <Keypad />
+            </div>
+            <div className="mx-auto h-full w-[10%] overflow-hidden">
+              <SpeakerGrid />
+            </div>
+          </div>
+          <Trackpad />
+          <div className="absolute inset-x-0 bottom-0 mx-auto h-2 w-20 rounded-tl-3xl rounded-tr-3xl bg-gradient-to-t from-[#272729] to-[#050505]" />
+          {showGradient && (
+            <div className="absolute inset-x-0 bottom-0 z-50 h-40 w-full bg-gradient-to-t from-white via-white to-transparent dark:from-black dark:via-black"></div>
+          )}
           {badge && <div className="absolute bottom-4 left-4">{badge}</div>}
         </div>
-      ) : (
-        /* Desktop: MacBook with animations */
-        <>
-          <Lid
-            src={src}
-            scaleX={scaleX}
-            scaleY={scaleY}
-            rotate={rotate}
-            translate={translate}
-          />
-          {/* Base area */}
-          <div className="relative -z-10 md:h-[22rem] md:w-[32rem] h-[12rem] w-full overflow-hidden rounded-2xl bg-gray-200 dark:bg-[#272729]">
-            {/* above keyboard bar */}
-            <div className="relative h-10 w-full">
-              <div className="absolute inset-x-0 mx-auto h-4 w-[80%] bg-[#050505]" />
-            </div>
-            <div className="relative flex">
-              <div className="mx-auto h-full w-[10%] overflow-hidden">
-                <SpeakerGrid />
-              </div>
-              <div className="mx-auto h-full w-[80%]">
-                <Keypad />
-              </div>
-              <div className="mx-auto h-full w-[10%] overflow-hidden">
-                <SpeakerGrid />
-              </div>
-            </div>
-            <Trackpad />
-            <div className="absolute inset-x-0 bottom-0 mx-auto h-2 w-20 rounded-tl-3xl rounded-tr-3xl bg-gradient-to-t from-[#272729] to-[#050505]" />
-            {showGradient && (
-              <div className="absolute inset-x-0 bottom-0 z-50 h-40 w-full bg-gradient-to-t from-white via-white to-transparent dark:from-black dark:via-black"></div>
-            )}
-            {badge && <div className="absolute bottom-4 left-4">{badge}</div>}
-          </div>
-        </>
-      )}
+      </div>
     </div>
   );
 };
@@ -187,12 +176,15 @@ export const Lid = ({
           transformStyle: "preserve-3d",
           transformOrigin: "top",
         }}
-        className="absolute inset-0 h-96 w-[32rem] rounded-2xl bg-[#010101] p-2"
+        className="absolute inset-0 h-96 w-[32rem] rounded-2xl bg-[#010101] p-0"
       >
         <div className="absolute inset-0 rounded-lg bg-[#000000]" />
-        <img
+        <video
           src={src as string}
-          alt="first image"
+          autoPlay
+          loop
+          muted
+          playsInline
           className="absolute inset-0 h-full w-full rounded-lg object-contain object-center-top"
         />
       </motion.div>

@@ -22,7 +22,7 @@ export default function MacbookScrollDemo() {
             <ECyberBadge className="h-10 w-10 -rotate-12 transform" />
           </a>
         }
-        src={`/assets/screen_platform1.webp`}
+        src={`/assets/platform_rec.webm`}
         showGradient={false}
       />
     </div>
