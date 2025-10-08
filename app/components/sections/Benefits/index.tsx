@@ -3,7 +3,7 @@ import { DoorClosedLocked, HeartHandshake, Orbit, Zap } from 'lucide-react';
 
 export default function BenefitsSection() {
   return (
-    <section className="w-full flex items-start justify-center mt-40 mb-80">
+    <section className="w-full flex items-start justify-center mt-30 mb-60">
       <div className="max-w-4xl mx-auto px-8 py-20">
         {/* Section Title */}
         <div className="text-center mb-16 bg-gradient-to-r from-[#111111]/0 via-[#111111]/80 to-[#111111]/0">

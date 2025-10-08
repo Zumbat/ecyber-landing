@@ -1,3 +1,5 @@
+'use client';
+
 import HoverMovingBorderButton from "../../ui/hover-moving-border-button";
 
 export default function HeroSection() {
@@ -56,6 +58,9 @@ export default function HeroSection() {
                 borderRadius="0.75rem"
                 duration={2000}
                 className="py-2 px-4"
+                onClick={() => {
+                  window.location.href = "https://tools.ecyber.it";
+                }}
               >
                 Inizia ora →
               </HoverMovingBorderButton>

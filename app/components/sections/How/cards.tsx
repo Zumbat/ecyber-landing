@@ -184,7 +184,7 @@ const ClientCards = () => {
             {/* Content */}
             <div className="flex-1">
                 {step.title}
-                <p className="text-[#A1A1A1] text-sm leading-relaxed">
+                <p className="text-[#E8E8E8] text-sm leading-relaxed">
                     {step.content}
                 </p>
             </div>

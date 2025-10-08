@@ -1,3 +1,5 @@
+'use client';
+
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import Image from 'next/image';
 import HoverMovingBorderButton from './ui/hover-moving-border-button';
@@ -70,6 +72,9 @@ return (<>
                   borderRadius="0.75rem"
                   duration={2000}
                   className="py-2 px-4"
+                  onClick={() => {
+                    window.location.href = "https://tools.ecyber.it";
+                  }}
                 >
                   Inizia ora →
                 </HoverMovingBorderButton>

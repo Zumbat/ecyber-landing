@@ -2,7 +2,7 @@ import HowCards from './cards';
 
 export default function HowSection() {
   return (
-    <section className="w-full flex items-end justify-center mt-100">
+    <section className="w-full flex items-end justify-center mt-40">
       <div className="md:w-[80%] w-full md:mx-auto px-8 py-20">
         {/* Section Title */}
         <div className="text-center mb-16 bg-gradient-to-r from-[#111111]/0 via-[#111111]/80 to-[#111111]/0">
