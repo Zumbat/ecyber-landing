@@ -9,33 +9,40 @@ export default function HeroSection() {
           {/* Hero Section */}
           <div className="space-y-8">
             {/* Main Headline */}
-            <h1 className="text-5xl font-bold leading-tight mb-2 orbitron-text">
-              <span className="block bg-gradient-to-r from-[#E8E8E8] via-[#3C3C3C] to-[#3C3C3C] bg-clip-text text-transparent">
-                Proteggi<br/> il tuo business.
+            <h1 className="flex flex-col gap-2 text-5xl font-bold leading-tight mb-2 orbitron-text">
+              <span className="block bg-gradient-to-b from-[#E8E8E8] via-[#a1a1a1] to-[#3C3C3C] bg-clip-text text-transparent">
+                Proteggi
+              </span>
+              <span className="block bg-gradient-to-b from-[#E8E8E8] via-[#a1a1a1] to-[#3C3C3C] bg-clip-text text-transparent">
+                il tuo business 
               </span>
             </h1>
-            <h2 className="text-2xl font-bold text-[#E8E8E8] leading-tight mb-2">
+            <h2 className="text-xl font-bold text-[#A8A8A8] leading-tight mb-2">
               <span className="block">
                 Scopri le vulnerabilità prima che lo facciano gli altri.
               </span>
             </h2>
 
             {/* Sub-headline */}
-            <p className="text-sm text-[#A1A1A1] mx-auto leading-relaxed">
-              Servizi avanzati di <span className="text-[#E8E8E8] font-semibold">Cyber Security</span>: 
-              <br/>Scanning del target, Treath Intelligence e Penetration Testing 
-              - con software top di gamma e report dettagliati.
+            <p className="text-sm text-[#A1A1A1] my-8 mx-auto leading-relaxed">
+              Servizi avanzati di <span className="text-[#E8E8E8] font-semibold">Cyber Intelligence</span> e <span className="text-[#E8E8E8] font-semibold">Red Teaming</span>:
+              <br/>Analisi del perimetro digitale, monitoraggio delle minacce, simulazioni di attacco e prevenzione proattiva 
+              — con un team dedicato che lavora per te e report strategici sempre aggiornati.
             </p>
 
             {/* Trust Indicators */}
-            <div className="pt-4 flex flex-wrap justify-end items-center gap-4 text-[#A1A1A1]">
+            <div className="pt-8 flex flex-wrap justify-end items-center gap-4 text-[#A1A1A1]">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-[#2d8c80] rounded-full animate-pulse"></div>
-                <span className="text-sm">Sicurezza garantita</span>
+                <span className="text-sm">Sicurezza continua</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-[#8B5CF6] rounded-full animate-pulse"></div>
-                <span className="text-sm">Report dettagliati</span>
+                <span className="text-sm">Report operativi</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-[#06b6d4] rounded-full animate-pulse"></div>
+                <span className="text-sm">Intelligence attiva</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-[#cd78de] rounded-full animate-pulse"></div>
@@ -59,3 +66,13 @@ export default function HeroSection() {
     </section>
   );
 }
+
+// Hero
+
+    // Proteggi il tuo business con intelligence attiva.
+    // Scopri le vulnerabilità prima che lo facciano gli altri.
+    
+    // Servizi avanzati di Cyber Intelligence e Red Teaming:
+    // Analisi del perimetro digitale, monitoraggio delle minacce, simulazioni di attacco e prevenzione proattiva — con un team dedicato che lavora per te e report strategici sempre aggiornati.
+    
+    // 🔒 Sicurezza continua 📊 Report operativi 🕵️ Intelligence attiva 🧭 Supporto 24/7

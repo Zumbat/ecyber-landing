@@ -14,7 +14,8 @@ export default function MacbookScrollDemo() {
                 Tre piattaforme <br/> che amerai usare.
             </div>
             <p className="text-[#A1A1A1] text-lg mb-2">
-                Ottimizzate per essere intuitive ed efficaci.
+              Strumenti sviluppati per essere intuitivi, efficaci e integrati con le attività del nostro Red Team.
+              <br/> Una visione unica: threat intelligence, analisi delle vulnerabilità e risposta operativa — tutto in un unico ambiente.
             </p>
         </>}
         badge={

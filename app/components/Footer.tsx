@@ -1,5 +1,6 @@
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import Image from 'next/image';
+import HoverMovingBorderButton from './ui/hover-moving-border-button';
 
 export default function Footer() {
 
@@ -14,14 +15,14 @@ return (<>
               <Image
                 src="/assets/e-cyber_logo.svg"
                 alt="E-Cyber Logo"
-                width={120}
-                height={40}
+                width={70}
+                height={25}
                 className="mb-4"
               />
             </div>
             <p className="text-[#A1A1A1] text-sm leading-relaxed mb-4">
-              Servizi avanzati di Cyber Security per proteggere il tuo business. 
-              Scanning, monitoring e penetration testing con strumenti professionali.
+              Servizi avanzati di Cyber Intelligence e Red Teaming per proteggere il tuo business.
+              Scanning, monitoraggio e simulazioni di attacco con strumenti e analisti professionisti.
             </p>
             <div className="flex space-x-4">
               <a href="https://www.facebook.com/excursusinvestigazioni" target="_blank">
@@ -43,20 +44,20 @@ return (<>
                 <h3 className="text-lg font-bold text-[#E8E8E8] mb-6">Contatti</h3>
                 <div className="space-y-4">
                   <div className="flex items-center space-x-3">
-                    <div className="w-6 h-6 bg-[#3C3C3C] rounded-full flex items-center justify-center">
-                      <Phone strokeWidth={1} className="text-[#E8E8E8]" size={24}/>
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center">
+                      <Phone strokeWidth={1} className="text-[#E8E8E8]" size={18}/>
                     </div>
                     <span className="text-[#A1A1A1] text-sm">800 642 988</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="w-6 h-6 bg-[#3C3C3C] rounded-full flex items-center justify-center">
-                      <Mail strokeWidth={1} className="text-[#E8E8E8]" size={24}/>
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center">
+                      <Mail strokeWidth={1} className="text-[#E8E8E8]" size={18}/>
                     </div>
                     <span className="text-[#A1A1A1] text-sm">info@excursusgroup.com</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="w-6 h-6 bg-[#3C3C3C] rounded-full flex items-center justify-center">
-                      <MapPin strokeWidth={1} className="text-[#E8E8E8]" size={24}/>
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center">
+                      <MapPin strokeWidth={1} className="text-[#E8E8E8]" size={18}/>
                     </div>
                     <span className="text-[#A1A1A1] text-sm">Via Ludovisi 35, Roma</span>
                   </div>
@@ -65,9 +66,13 @@ return (<>
               
               {/* CTA Button */}
               <div className="flex items-center lg:items-start">
-                <button className="border border-[#3c3c3c] text-[#E8E8E8] hover:bg-[#3c3c3c]/20 hover:text-[#E8E8E8] font-semibold py-2 px-4 rounded-2xl text-sm cursor-pointer transition-all duration-300">
-                  Iscriviti
-                </button>
+                <HoverMovingBorderButton
+                  borderRadius="0.75rem"
+                  duration={2000}
+                  className="py-2 px-4"
+                >
+                  Inizia ora →
+                </HoverMovingBorderButton>
               </div>
             </div>
           </div>
