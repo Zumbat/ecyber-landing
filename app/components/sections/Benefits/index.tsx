@@ -11,7 +11,7 @@ export default function BenefitsSection() {
             Perché sceglierci
           </h2>
           <p className="text-[#A1A1A1] text-lg">
-            I benefici che otterrai scegliendo i nostri servizi di Cyber Security
+            I benefici concreti del nostro approccio di cyber intelligence operativa.
           </p>
         </div>
         
@@ -21,22 +21,22 @@ export default function BenefitsSection() {
             {
               icon: <Orbit strokeWidth={1} className="text-[#E8E8E8]" size={24}/>,
               title: "Prevenzione proattiva",
-              description: "Attacchi scoperti prima che diventino danni."
+              description: "Attacchi scoperti e neutralizzati prima che diventino incidenti."
             },
             {
               icon: <DoorClosedLocked strokeWidth={1} className="text-[#E8E8E8]" height={24}/>,
               title: "Riduzione dei rischi",
-              description: "Dati al sicuro, reputazione protetta."
+              description: "Protezione costante dei dati e della reputazione aziendale."
             },
             {
               icon: <Zap strokeWidth={1} className="text-[#E8E8E8]" height={24}/>,
               title: "Chiarezza & trasparenza",
-              description: "Report comprensibili, priorità definite."
+              description: "Report d’intelligence comprensibili, priorità operative definite."
             },
             {
               icon: <HeartHandshake strokeWidth={1} className="text-[#E8E8E8]" size={24}/>,
               title: "Conformità & fiducia",
-              description: "Rispetti normative, rassicuri clienti / partner."
+              description: "Rispettare le normative, rassicurare clienti e partner diventa parte naturale del tuo ecosistema digitale."
             }
           ]}
         />

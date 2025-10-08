@@ -13,7 +13,7 @@ export default function HowSection() {
             Tecnologia e Metodo per garantire la massima sicurezza
           </p>
         </div>
-        
+
         {/* Content Grid */}
         <HowCards />
       </div>

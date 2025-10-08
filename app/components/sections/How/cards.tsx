@@ -13,8 +13,10 @@ const ClientCards = () => {
     {
       alert: "Radar",
       image: "/images/radar.mp4",
-      title: "Software potentissimi",
-      content: "Usiamo strumenti professionali, testati nel settore, combinati con competenze manuali per garantire precisione e completezza.",
+      title: <h3 className="text-xl font-bold text-[#E8E8E8] mb-2">
+        Non solo software, <br/>ma <span className="bg-[#50ada2]/50 text-[#50ada2]/70">persone esperte</span>.
+      </h3>,
+      content: "Il nostro Red Team / Offending Security combina strumenti professionali e capacità umane di analisi per garantire precisione, realismo e profondità operativa in ogni assessment.",
       element: <div className="flex items-center justify-center w-full h-full overflow-hidden">
         {/* Sfondo con punti grigi */}
         <div 
@@ -53,8 +55,10 @@ const ClientCards = () => {
     {
       alert: "Report",
       image: "/images/report.mp4",
-      title: "Report dettagliati",
-      content: "Ogni assessment culmina in un report chiaro: descrizione delle vulnerabilità, impatto, probabilità, suggerimenti concreti per mitigazione, riferimenti tecnici.",
+      title: <h3 className="text-xl font-bold text-[#E8E8E8] mb-2">
+        Report di intelligence <br/><span className="bg-[#976df7]/50 text-[#976df7]/70">chiari e utili</span>.
+      </h3>,
+      content: "Ogni attività genera un report con priorità di rischio, descrizione tecnica, contesto d’intelligence e indicazioni pratiche per la mitigazione. Comunicazione chiara, linguaggio comprensibile, impatto reale.",
       element: <div className="flex items-center justify-center w-full h-full overflow-hidden">
         {/* Sfondo con punti grigi */}
         <div 
@@ -93,8 +97,10 @@ const ClientCards = () => {
     {
       alert: "Supporto",
       image: "/images/supporto.mp4",
-      title: "Supporto continuo",
-      content: "Non è solo un check una tantum: offriamo monitoring (quando pertinente), follow-up, e consulenza per mantenere l'assetto sicuro nel tempo.",
+      title: <h3 className="text-xl font-bold text-[#E8E8E8] mb-2 pb-5">
+        Supporto <span className="bg-[#e18cf2]/50 text-[#e18cf2]/70">continuo</span>.
+      </h3>,
+      content: "Non è un controllo occasionale: monitoriamo costantemente i tuoi asset, interveniamo su nuove minacce e aggiorniamo la strategia di difesa. Restiamo al tuo fianco per mantenere il livello di sicurezza sempre elevato nel tempo.",
       // element: <div className="flex items-center justify-center w-full h-full">
       //   <video 
       //     src="/assets/counter_ecyber.webm" 
@@ -160,11 +166,11 @@ const ClientCards = () => {
       {STEPS.map((step, index) => (
         <div 
           key={index}
-          className={`flex flex-col-reverse items-stretch justify-between w-full relative gap-8 p-8 rounded-2xl bg-[#111111] border border-[#3C3C3C] h-full flex-1 min-h-[460px]`}
+          className={`flex flex-col-reverse items-stretch justify-between relative gap-8 p-8 rounded-2xl bg-[#111111] border border-[#3C3C3C] flex-1`}
         >
           {/* Card positioned based on index */}
           <div 
-            className={`relative w-full h-56 rounded-2xl overflow-hidden `}
+            className={`relative w-full h-56 mt-auto rounded-2xl overflow-hidden `}
           >
             <AnimatedCard title={step.alert} element={step.element} />
           </div>
@@ -172,14 +178,12 @@ const ClientCards = () => {
           {/* Content - positioned to the top */}
           <div className={`flex items-start space-x-4 max-w-md flex-1`}>
             {/* Icon */}
-            <div className="flex-shrink-0 w-4 h-4 mt-1 bg-[#3C3C3C] rounded-full flex items-center justify-center">
+            {/* <div className="flex-shrink-0 w-4 h-4 mt-1 bg-[#3C3C3C] rounded-full flex items-center justify-center">
                 <div className={`w-2 h-2 bg-[${index==0 ? '#2d8c80' : index==1 ? '#8B5CF6' : '#cd78de'}] rounded-full animate-pulse`}/>
-            </div>
+            </div> */}
             {/* Content */}
             <div className="flex-1">
-                <h3 className="text-xl font-bold text-[#E8E8E8] mb-2">
-                    {step.title}
-                </h3>
+                {step.title}
                 <p className="text-[#A1A1A1] text-sm leading-relaxed">
                     {step.content}
                 </p>

@@ -25,7 +25,7 @@ export default function HeroSection() {
 
             {/* Sub-headline */}
             <p className="text-sm text-[#A1A1A1] my-8 mx-auto leading-relaxed">
-              Servizi avanzati di <span className="text-[#E8E8E8] font-semibold">Cyber Intelligence</span> e <span className="text-[#E8E8E8] font-semibold">Red Teaming</span>:
+              Servizi avanzati di <span className="text-[#E8E8E8] font-semibold">Cyber Intelligence</span> e <span className="text-[#E8E8E8] font-semibold">Red Teaming / Offending Security</span>:
               <br/>Analisi del perimetro digitale, monitoraggio delle minacce, simulazioni di attacco e prevenzione proattiva 
               — con un team dedicato che lavora per te e report strategici sempre aggiornati.
             </p>
@@ -66,13 +66,3 @@ export default function HeroSection() {
     </section>
   );
 }
-
-// Hero
-
-    // Proteggi il tuo business con intelligence attiva.
-    // Scopri le vulnerabilità prima che lo facciano gli altri.
-    
-    // Servizi avanzati di Cyber Intelligence e Red Teaming:
-    // Analisi del perimetro digitale, monitoraggio delle minacce, simulazioni di attacco e prevenzione proattiva — con un team dedicato che lavora per te e report strategici sempre aggiornati.
-    
-    // 🔒 Sicurezza continua 📊 Report operativi 🕵️ Intelligence attiva 🧭 Supporto 24/7

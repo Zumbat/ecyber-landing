@@ -10,7 +10,7 @@ export default function WhatSection() {
             Cosa facciamo
           </h2>
           <p className="text-[#A1A1A1] text-lg">
-            Servizi avanzati di Cyber Security per proteggere il tuo business
+            Servizi avanzati di Cyber Intelligence e Red Teaming per proteggere il tuo business da attacchi reali.
           </p>
         </div>
         
@@ -18,17 +18,17 @@ export default function WhatSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <ServiceCard
             title="Scanning del target"
-            description="Scopri immediatamente quali sono i punti deboli nel tuo perimetro digitale. Scanner avanzati che analizzano ogni superficie 'visibile', identificano vulnerabilità note e configurazioni errate prima che possano essere sfruttate."
+            description="Mappiamo in profondità il tuo perimetro digitale per individuare asset esposti e punti deboli. Identifichiamo vulnerabilità tecniche e configurazioni errate, per bloccare in anticipo ciò che un attaccante potrebbe sfruttare."
             className="hover:border-[#2d8c80]"
           />
           <ServiceCard
             title="Treath Intelligence"
-            description="Monitora il web, i database esposti, e rispondi proattivamente. Ricevi alert in tempo reale per qualunque esposizione o perdita potenziale dei tuoi dati sensibili."
+            description="Monitoriamo il web, il dark web e le fonti sensibili per scoprire informazioni compromesse, fughe di dati e indicatori di attacco. Ti forniamo alert in tempo reale e dossier di intelligence per anticipare ogni rischio."
             className="hover:border-[#8B5CF6]"
           />
           <ServiceCard
             title="Penetration Testing (Pentest)"
-            description="Simuliamo attacchi reali per testare la tua difesa. Report pratici + piano d'azione concreto per sanare falle critiche. Test manuali + automatizzati, copertura completa: reti, applicazioni, infrastrutture."
+            description="Simuliamo attacchi complessi con tecniche reali, misurando la resilienza della tua difesa. I nostri esperti Red Team elaborano report tattici e un piano d’azione mirato per mitigare ogni criticità. Copertura completa: reti, applicazioni, infrastrutture e processi."
             className="hover:border-[#cd78de]"
           />
         </div>
