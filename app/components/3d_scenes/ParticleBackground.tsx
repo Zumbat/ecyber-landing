@@ -321,6 +321,7 @@ export default function ParticleBackground({
 
         // Scroll handler
         const handleScroll = () => {
+          if (typeof window === 'undefined') return;
           const scrollY = window.scrollY;
           const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
           const scrollProgress = Math.min(scrollY / maxScroll, 1); // 0 to 1
@@ -332,16 +333,20 @@ export default function ParticleBackground({
         };
 
         // Add event listeners
-        window.addEventListener('resize', handleResize);
-        window.addEventListener('scroll', handleScroll);
+        if (typeof window !== 'undefined') {
+          window.addEventListener('resize', handleResize);
+          window.addEventListener('scroll', handleScroll);
+        }
 
     // Start animation loop
     animate();
 
         // Cleanup
         return () => {
-          window.removeEventListener('resize', handleResize);
-          window.removeEventListener('scroll', handleScroll);
+          if (typeof window !== 'undefined') {
+            window.removeEventListener('resize', handleResize);
+            window.removeEventListener('scroll', handleScroll);
+          }
       
       if (animationIdRef.current) {
         cancelAnimationFrame(animationIdRef.current);

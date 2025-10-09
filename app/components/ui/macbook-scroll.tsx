@@ -46,7 +46,7 @@ export const MacbookScroll = ({
 
   useEffect(() => {
     const checkMobile = () => {
-      if (window && window.innerWidth <= 768) {
+      if (typeof window !== 'undefined' && window.innerWidth <= 768) {
         setIsMobile(true);
       } else {
         setIsMobile(false);
@@ -54,9 +54,15 @@ export const MacbookScroll = ({
     };
     
     checkMobile();
-    window.addEventListener('resize', checkMobile);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', checkMobile);
+    }
     
-    return () => window.removeEventListener('resize', checkMobile);
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', checkMobile);
+      }
+    };
   }, []);
 
   const scaleX = useTransform(
@@ -69,7 +75,7 @@ export const MacbookScroll = ({
     [0, 0.3],
     [0.6, isMobile ? 1 : 1.5],
   );
-  const translate = useTransform(scrollYProgress, [0, 0.6], [20, isMobile ? 280 : window && window.innerWidth < 1800 ? 460 : 500]);
+  const translate = useTransform(scrollYProgress, [0, 0.6], [20, isMobile ? 280 : (typeof window !== 'undefined' && window.innerWidth < 1800) ? 460 : 500]);
   const rotate = useTransform(scrollYProgress, [0.1, 0.12, 0.3], [-28, -28, 0]);
   const textTransform = useTransform(scrollYProgress, [0, 0.3], [5, 100]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
@@ -77,7 +83,7 @@ export const MacbookScroll = ({
   return (
     <div
       ref={ref}
-      className={`flex ${isMobile? 'min-h-[90vh]' : window && window.innerWidth < 1800 ? 'min-h-[160vh]' : 'min-h-[140vh]'} shrink-0 transform flex-col items-center justify-start py-0 ${
+      className={`flex ${isMobile? 'min-h-[90vh]' : (typeof window !== 'undefined' && window.innerWidth < 1800) ? 'min-h-[160vh]' : 'min-h-[140vh]'} shrink-0 transform flex-col items-center justify-start py-0 ${
         isMobile 
           ? 'scale-100' 
           : 'scale-[0.55] sm:scale-60 md:scale-100 md:pb-80 pt-60 pb-40 [perspective:800px]'

@@ -50,6 +50,10 @@ export const WavyBackground = ({
     if (!canvas) return;
     ctx = canvas.getContext("2d");
     if (!ctx) return;
+    
+    // Check if window is available (SSR safety)
+    if (typeof window === 'undefined') return;
+    
     w = ctx.canvas.width = window.innerWidth;
     h = ctx.canvas.height = 500;
     ctx.filter = `blur(${blur}px)`;

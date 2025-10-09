@@ -16,6 +16,9 @@ function CameraController() {
     camera.position.set(0, 0, 2);
     camera.lookAt(0, 0, 0);
     
+    // Check if window is available (SSR safety)
+    if (typeof window === 'undefined') return;
+    
     // Scroll handler - zoom completo a 2vh
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -70,6 +73,9 @@ export default function Scene({ className = "", style = {}, width = "100%", heig
   const [webglSupported, setWebglSupported] = useState(true);
 
   useEffect(() => {
+    // Check if window/document is available (SSR safety)
+    if (typeof window === 'undefined' || typeof document === 'undefined') return;
+    
     // Rileva se WebGL è supportato
     const canvas = document.createElement('canvas');
     const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
