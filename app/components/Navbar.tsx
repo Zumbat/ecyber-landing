@@ -55,10 +55,10 @@ export default function Navbar() {
             <button 
               className="border border-[#3c3c3c] text-[#E8E8E8] hover:bg-[#3c3c3c]/20 hover:text-[#E8E8E8] font-semibold py-2 px-4 rounded-2xl text-sm cursor-pointer"
               onClick={() => {
-                window.location.href = "https://tools.ecyber.it";
+                window.location.href = "https://tools.ecyber.it/auth/request-link";
               }}
             >
-              Iscriviti
+              Inizia ora
             </button>
           </div>
         </div>

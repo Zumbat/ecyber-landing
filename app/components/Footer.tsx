@@ -73,7 +73,7 @@ return (<>
                   duration={2000}
                   className="py-2 px-4"
                   onClick={() => {
-                    window.location.href = "https://tools.ecyber.it";
+                    window.location.href = "https://tools.ecyber.it/auth/request-link";
                   }}
                 >
                   Inizia ora →
