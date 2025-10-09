@@ -11,7 +11,7 @@ export default function MacbookScrollDemo() {
         title={
           <>
           <div className="text-4xl font-bold mb-2 text-[#E8E8E8] orbitron-text">
-                Tre piattaforme <br/> che amerai usare.
+                Tre piattaforme <br/> Un’unica esperienza.
             </div>
             <p className="text-[#A1A1A1] text-lg mb-2">
               Strumenti sviluppati per essere intuitivi, efficaci e integrati con le attività del nostro Red Team.
