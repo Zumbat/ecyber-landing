@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useTranslation } from 'react-i18next';
+import SelectorLanguage from './Selector_language';
 
 export default function Navbar() {
   const [isFooterVisible, setIsFooterVisible] = useState(false);
-
+  const { t, i18n } = useTranslation();
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -51,15 +53,16 @@ export default function Navbar() {
           </div>
 
           {/* CTA Button */}
-          <div className="flex items-center">
-            <button 
+          <div className="flex items-center gap-4">
+            <button
               className="border border-[#3c3c3c] text-[#E8E8E8] hover:bg-[#3c3c3c]/20 hover:text-[#E8E8E8] font-semibold py-2 px-4 rounded-2xl text-sm cursor-pointer"
               onClick={() => {
                 window.location.href = "https://tools.ecyber.it/auth/request-link";
               }}
             >
-              Inizia ora
+              {t('nav.start')} →
             </button>
+            <SelectorLanguage />
           </div>
         </div>
       </div>

@@ -3,8 +3,10 @@
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import Image from 'next/image';
 import HoverMovingBorderButton from './ui/hover-moving-border-button';
+import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
+const {t} = useTranslation()
 
 return (<>
     <footer className="w-full bg-[#101010] gradient-border-top">
@@ -23,8 +25,7 @@ return (<>
               />
             </div>
             <p className="text-[#A1A1A1] text-sm leading-relaxed mb-4">
-              Servizi avanzati di Cyber Intelligence e Red Teaming per proteggere il tuo business.
-              Scanning, monitoraggio e simulazioni di attacco con strumenti e analisti professionisti.
+             {t('footer.text')}
             </p>
             <div className="flex flex-col space-y-4">
               <div className="flex space-x-4">
@@ -81,7 +82,7 @@ return (<>
                     window.location.href = "https://tools.ecyber.it/auth/request-link";
                   }}
                 >
-                  Inizia ora →
+                   {t('nav.start')} →
                 </HoverMovingBorderButton>
               </div>
             </div>

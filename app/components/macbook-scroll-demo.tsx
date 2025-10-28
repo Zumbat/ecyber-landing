@@ -1,7 +1,11 @@
+'use client';
 import React from "react";
 import { MacbookScroll } from "@/app/components/ui/macbook-scroll";
+import { useTranslation } from "react-i18next";
 
 export default function MacbookScrollDemo() {
+  const {t} = useTranslation();
+
   return (
     <div 
       className="w-full overflow-hidden relative bg-[#111111] gradient-border-top mt-40"
@@ -11,11 +15,11 @@ export default function MacbookScrollDemo() {
         title={
           <>
           <div className="text-4xl font-bold mb-2 text-[#E8E8E8] orbitron-text">
-                Tre piattaforme <br/> Un’unica esperienza.
+                {t('section_macbook.title_part1')} <br/> {t('section_macbook.title_part2')}.
             </div>
             <p className="text-[#A1A1A1] text-lg mb-2">
-              Strumenti sviluppati per essere intuitivi, efficaci e integrati con le attività del nostro Red Team.
-              <br/> Una visione unica: threat intelligence, analisi delle vulnerabilità e risposta operativa — tutto in un unico ambiente.
+              {t('section_macbook.description_part1')}
+              <br/> {t('section_macbook.description_part2')}.
             </p>
         </>}
         badge={

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Orbitron } from "next/font/google";
 import "./globals.css";
-
+import ClientI18nProvider from './components/ClientI18nProvider';
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -32,7 +32,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${orbitron.variable} antialiased`}
       >
-        {children}
+        <ClientI18nProvider>
+          {children}
+        </ClientI18nProvider>
       </body>
     </html>
   );

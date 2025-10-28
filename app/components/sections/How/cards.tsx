@@ -4,27 +4,30 @@ import { motion } from "framer-motion";
 import AnimatedCard from "./AnimatedCard";
 import Radar from "./Radar";
 import PasswordScan from "./Users";
+import { useTranslation } from "react-i18next";
 
 const ClientCards = () => {
   const [activeStep, setActiveStep] = useState<number | null>(null);
   console.log(activeStep, "activeStep");
+  const {t} = useTranslation();
+
+
 
   const STEPS = [
     {
       alert: "Radar",
       image: "/images/radar.mp4",
       title: <h3 className="text-xl font-bold text-[#E8E8E8] mb-2">
-        Non solo software, <br/>ma <span className="bg-[#50ada2]/50 text-[#50ada2]/70">persone esperte</span>.
+        {t('how_section.cards1.title_part1')} <br/>{t('how_section.cards1.title_part2')} <span className="bg-[#50ada2]/50 text-[#50ada2]/70">{t('how_section.cards1.title_part3')}</span>.
+        
       </h3>,
-      content: "Il nostro Red Team / Offending Security combina strumenti professionali e capacità umane di analisi per garantire precisione, realismo e profondità operativa in ogni assessment.",
+      content: t('how_section.cards1.content'),
       element: <div className="flex items-center justify-center w-full h-full overflow-hidden">
         {/* Sfondo con punti grigi */}
         <div 
            className="absolute inset-0 opacity-30"
            style={{
-             backgroundColor: `
-               #1c1c1c
-             `,
+             backgroundColor: ` #1c1c1c  `,
              backgroundSize: '20px 20px'
            }}
          />
@@ -56,9 +59,9 @@ const ClientCards = () => {
       alert: "Report",
       image: "/images/report.mp4",
       title: <h3 className="text-xl font-bold text-[#E8E8E8] mb-2">
-        Report di intelligence <br/><span className="bg-[#976df7]/50 text-[#976df7]/70">chiari e utili</span>.
+        {t('how_section.cards2.title_part1')} <br/><span className="bg-[#976df7]/50 text-[#976df7]/70">{t('how_section.cards2.title_part2')}</span>.
       </h3>,
-      content: "Ogni attività genera un report con priorità di rischio, descrizione tecnica, contesto d’intelligence e indicazioni pratiche per la mitigazione. Comunicazione chiara, linguaggio comprensibile, impatto reale.",
+      content: t('how_section.cards2.content'),
       element: <div className="flex items-center justify-center w-full h-full overflow-hidden">
         {/* Sfondo con punti grigi */}
         <div 
@@ -98,9 +101,9 @@ const ClientCards = () => {
       alert: "Supporto",
       image: "/images/supporto.mp4",
       title: <h3 className="text-xl font-bold text-[#E8E8E8] mb-2 pb-5">
-        Supporto <span className="bg-[#e18cf2]/50 text-[#e18cf2]/70">continuo</span>.
+        {t('how_section.cards3.title_part1')} <span className="bg-[#e18cf2]/50 text-[#e18cf2]/70">{t('how_section.cards3.title_part2')}</span>.
       </h3>,
-      content: "Non è un controllo occasionale: monitoriamo costantemente i tuoi asset, interveniamo su nuove minacce e aggiorniamo la strategia di difesa. Restiamo al tuo fianco per mantenere il livello di sicurezza sempre elevato nel tempo.",
+      content: t('how_section.cards3.content'),
       // element: <div className="flex items-center justify-center w-full h-full">
       //   <video 
       //     src="/assets/counter_ecyber.webm" 
