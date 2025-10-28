@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, forwardRef } from "react";
+import React, { forwardRef } from "react";
 import { WavyBackground } from "./ui/wavy-background";
 
 const WavyBackgroundDemo = forwardRef<HTMLDivElement>((props, ref) => {
