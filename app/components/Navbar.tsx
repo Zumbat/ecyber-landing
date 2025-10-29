@@ -7,7 +7,7 @@ import SelectorLanguage from './Selector_language';
 
 export default function Navbar() {
   const [isFooterVisible, setIsFooterVisible] = useState(false);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
