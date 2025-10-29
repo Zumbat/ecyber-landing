@@ -10,7 +10,7 @@ export default function HeroSection() {
     <section className="w-full h-screen flex items-start justify-center relative overflow-hidden pt-20">
       {/* Main Content */}
       <div className="relative z-10 w-full">
-        <div className="max-w-4xl mx-auto px-8 text-left rounded-2xl py-50">
+        <div className="max-w-4xl mx-auto px-8 text-left rounded-2xl md:py-50 py-20">
           {/* Hero Section */}
           <div className="space-y-8">
             {/* Main Headline */}
