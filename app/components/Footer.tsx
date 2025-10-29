@@ -47,7 +47,7 @@ return (<>
 
           {/* Contatti */}
           <div className="lg:col-span-1">
-            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+            <div className="flex flex-row items-start lg:justify-between gap-6">
               <div className="flex-1">
                 <h3 className="text-lg font-bold text-[#E8E8E8] mb-6">Contatti</h3>
                 <div className="space-y-4">
@@ -73,7 +73,7 @@ return (<>
               </div>
               
               {/* CTA Button */}
-              <div className="flex items-center lg:items-start">
+              <div className="flex items-center justify-end lg:items-start">
                 <HoverMovingBorderButton
                   borderRadius="0.75rem"
                   duration={2000}

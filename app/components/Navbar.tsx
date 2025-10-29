@@ -55,7 +55,7 @@ export default function Navbar() {
           {/* CTA Button */}
           <div className="flex items-center gap-4">
             <button
-              className="border border-[#3c3c3c] text-[#E8E8E8] hover:bg-[#3c3c3c]/20 hover:text-[#E8E8E8] font-semibold py-2 px-4 rounded-2xl text-sm cursor-pointer"
+              className="border border-[#3c3c3c] text-[#E8E8E8] hover:bg-[#3c3c3c]/20 hover:text-[#E8E8E8] font-semibold py-1.5 px-3 rounded-xl text-sm cursor-pointer"
               onClick={() => {
                 window.location.href = "https://tools.ecyber.it/auth/request-link";
               }}
