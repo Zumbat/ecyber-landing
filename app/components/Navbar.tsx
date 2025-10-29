@@ -60,7 +60,7 @@ export default function Navbar() {
                 window.location.href = "https://tools.ecyber.it/auth/request-link";
               }}
             >
-              {t('nav.start')} →
+              {t('nav.start')} 
             </button>
             <SelectorLanguage />
           </div>

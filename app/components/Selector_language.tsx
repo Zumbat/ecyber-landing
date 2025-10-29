@@ -43,7 +43,7 @@ export default function SelectorLanguage() {
           cursor-pointer
           transition-all
           duration-200
-          min-w-[140px]
+          md:min-w-[140px]
           shadow-lg
           shadow-black/20
           backdrop-blur-sm
@@ -56,7 +56,7 @@ export default function SelectorLanguage() {
       >
         <div className="flex items-center gap-2">
           <span className="text-base">{currentLanguage.flag}</span>
-          <span className="font-medium">{currentLanguage.label}</span>
+          <span className="font-medium hidden sm:inline">{currentLanguage.label}</span>
         </div>
         
         <motion.div
@@ -103,7 +103,7 @@ export default function SelectorLanguage() {
                 ease: "easeOut"
               }}
               className="
-                absolute top-full left-0 right-0 z-50 mt-2
+                absolute top-full md:left-0 left--10 right-0 z-50 mt-2
                 bg-gray-900 
                 border 
                 border-gray-700 

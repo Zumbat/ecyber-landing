@@ -82,7 +82,7 @@ return (<>
                     window.location.href = "https://tools.ecyber.it/auth/request-link";
                   }}
                 >
-                   {t('nav.start')} →
+                   {t('nav.start')} 
                 </HoverMovingBorderButton>
               </div>
             </div>

@@ -22,7 +22,7 @@ export const translations = {
       operational_reports: "Report operativi",
       active_intelligence: "Intelligence attiva",
       "24_7_support": "Supporto 24/7",
-      start_now: "Inizia ora →",
+      start_now: "Inizia ora",
     },
     what_section: {
       title: "Cosa facciamo",
@@ -115,7 +115,7 @@ export const translations = {
       operational_reports: "Operational reports",
       active_intelligence: "Active intelligence",
       "24_7_support": "24/7 support",
-      start_now: "Start now →",
+      start_now: "Start now",
     },
     what_section: {
       title: "What we do",
